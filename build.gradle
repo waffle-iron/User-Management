@@ -3,9 +3,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:e2e-boot-gradle-plugin:1.5.8.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
     }
 }
+
 
 plugins {
     id 'net.saliman.cobertura' version '2.3.1'
@@ -32,11 +33,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:e2e-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-web")
     // tag::actuator[]
-    compile("org.springframework.boot:e2e-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
     // tag::tests[]
-    testCompile("org.springframework.boot:e2e-boot-starter-test")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
     // end::tests[]
 }
