@@ -8,7 +8,7 @@ public class StartController {
     
     @RequestMapping("/")
     public String index() {
-        return "Greetings from User Menagement SacadaLTS! test";
+        return "Greetings from User Menagement SacadaLTS!";
     }
     
 }
