@@ -1,4 +1,4 @@
-package org.scada_lts.user_management;
+package org.scada_lts.user_management.web;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
