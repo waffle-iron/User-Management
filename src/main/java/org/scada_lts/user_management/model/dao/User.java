@@ -1,6 +1,8 @@
-package org.scada_lts.user_management.model.dto;
+package org.scada_lts.user_management.model.dao;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private Long id;
     private String name;
@@ -8,6 +10,11 @@ public class User {
 
     public User() {
         this.name="test";
+    }
+
+    public User(String name, String passwordMd5) {
+        this.name = name;
+        this.passwordMd5 = passwordMd5;
     }
 
     public String getName() {

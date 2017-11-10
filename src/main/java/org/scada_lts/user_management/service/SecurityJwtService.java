@@ -15,7 +15,7 @@ import java.util.Date;
 @Service
 public class SecurityJwtService {
 
-    private final static String ISSUER = "User-Management";
+    private final static String ISSUER = "UserDto-Management";
     private final static Long TIME_EXPIRATION = 200_000L;
     private final static String SUBJECT = "UM";
 

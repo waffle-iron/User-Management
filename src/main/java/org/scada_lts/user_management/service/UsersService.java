@@ -1,6 +1,8 @@
 package org.scada_lts.user_management.service;
 
-import org.scada_lts.user_management.model.dto.User;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.scada_lts.user_management.model.dao.User;
+import org.scada_lts.user_management.model.dto.UserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,8 +13,8 @@ import java.util.Map;
 @Service
 public class UsersService {
 
-    private Map<Long, User> users = new HashMap<Long, User>();
-    private Map<String, User> userNames = new HashMap<String, User>();
+    private Map<Long, User> users = new HashMap<>();
+    private Map<String, User> userNames = new HashMap<>();
     private Long counter = 0L;
 
     public UsersService() {
@@ -20,18 +22,21 @@ public class UsersService {
     }
 
     public List<User> getAll() {
-        return new ArrayList<User>(users.values());
+        return new ArrayList<>(users.values());
     }
 
-    public User add(User user) {
+    public User add(UserDto userDto) {
+        User user = new User();
         user.setId(counter++);
+        user.setName(userDto.getName());
+        user.setPasswordMd5(DigestUtils.md5Hex(userDto.getPassword()).toUpperCase());
         users.put(user.getId(),user);
         userNames.put(user.getName().trim().toUpperCase(),user);
         return user;
     }
 
-    public void dell(User user) {
-      User userToRemove =  users.get(user.getId());
+    public void dell(UserDto userDto) {
+      User userToRemove =  users.get(userDto.getId());
       userNames.remove(userToRemove);
       users.remove(userToRemove);
     }

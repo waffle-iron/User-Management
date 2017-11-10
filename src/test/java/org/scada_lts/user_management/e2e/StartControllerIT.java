@@ -36,6 +36,6 @@ public class StartControllerIT {
     public void getGreeting() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
-        assertThat(response.getBody(), equalTo("Greetings from User Menagement SacadaLTS!"));
+        assertThat(response.getBody(), equalTo("Greetings from UserDto Menagement SacadaLTS!"));
     }
 }
