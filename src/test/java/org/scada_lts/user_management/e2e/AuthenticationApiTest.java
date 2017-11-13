@@ -7,23 +7,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.scada_lts.user_management.model.dao.User;
-import org.scada_lts.user_management.model.dto.UserDto;
 import org.scada_lts.user_management.service.AuthenticationService;
 import org.scada_lts.user_management.service.UsersService;
 import org.scada_lts.user_management.web.api.AuthenticationAPI;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import javax.annotation.Resource;
-
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -40,7 +36,6 @@ public class AuthenticationApiTest {
     @InjectMocks
     private AuthenticationAPI authApi;
 
-    //@Resource
     private MockMvc mockMvc;
 
     @Before
@@ -54,12 +49,25 @@ public class AuthenticationApiTest {
     @Test
     public void getTokenUser() throws Exception {
 
-        when(authService.auth(new UserDto(null,null))).thenReturn("111111111111111");
+        when(authService.auth(null,null)).thenReturn("111111111111111");
         when(usersService.getUser(null)).thenReturn(new User("name","password"));
         this.mockMvc.perform(post("/auth/name/password"))
                 .andDo(print()).andExpect(status().isOk());
                 //.andExpect(jsonPath("$.name").value("test"));
     }
 
-    
+    //@Test
+    public void checkToken() throws Exception {
+        when(authService.auth("111111")).thenReturn(true);
+        //TODO
+        String jsonBody = "";
+
+
+            this.mockMvc.perform(post("/auth")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(jsonBody))
+                    .andExpect(status().isOk());
+
+    }
+
 }

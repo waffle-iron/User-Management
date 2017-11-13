@@ -25,11 +25,11 @@ public class UsersService {
         return new ArrayList<>(users.values());
     }
 
-    public User add(UserDto userDto) {
+    public User add(String username, String password ) {
         User user = new User();
         user.setId(counter++);
-        user.setName(userDto.getName());
-        user.setPasswordMd5(DigestUtils.md5Hex(userDto.getPassword()).toUpperCase());
+        user.setName(username);
+        user.setPasswordMd5(DigestUtils.md5Hex(password).toUpperCase());
         users.put(user.getId(),user);
         userNames.put(user.getName().trim().toUpperCase(),user);
         return user;

@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Entry {
 
-    private List<EntityInstance> entities;
+    private List<EntityIdentity> entities;
     private Byte mask;
     private Sid sid;
 
-    public List<EntityInstance> getEntities() {
+    public List<EntityIdentity> getEntities() {
         return entities;
     }
 
-    public void setEntities(List<EntityInstance> entities) {
+    public void setEntities(List<EntityIdentity> entities) {
         this.entities = entities;
     }
 

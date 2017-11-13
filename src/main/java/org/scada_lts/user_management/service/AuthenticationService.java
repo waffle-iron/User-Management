@@ -2,7 +2,6 @@ package org.scada_lts.user_management.service;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.scada_lts.user_management.model.dao.User;
-import org.scada_lts.user_management.model.dto.UserDto;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,15 +19,15 @@ public class AuthenticationService {
   @Resource
   private SecurityJwtService securityJwtService;
 
-  public String auth(UserDto userDto) {
-      User user = usersService.getUser(userDto.getName());
+  public String auth(String username, String password) {
+      User user = usersService.getUser(username);
       String result="";
-      if (user.getPasswordMd5().equals(DigestUtils.md5Hex(userDto.getPassword()).toUpperCase())) {
+      if (user.getPasswordMd5().equals(DigestUtils.md5Hex(password).toUpperCase())) {
           String token = tokens.get(user.getId());
           if (securityJwtService.checkJwt(token)) {
               result = token;
           } else {
-              result = securityJwtService.generateToken(userDto.getName());
+              result = securityJwtService.generateToken(username);
               tokens.put(user.getId(), result);
           }
       }

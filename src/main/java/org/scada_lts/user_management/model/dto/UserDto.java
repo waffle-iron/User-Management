@@ -6,15 +6,13 @@ public class UserDto implements Serializable {
 
     private Long id;
     private String name;
-    private String password;
 
     public UserDto() {
         this.name="test";
     }
 
-    public UserDto(String name, String password) {
+    public UserDto(String name) {
         this.name = name;
-        this.password = password;
     }
 
     public String getName() {
@@ -33,11 +31,4 @@ public class UserDto implements Serializable {
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

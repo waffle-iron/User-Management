@@ -1,7 +1,6 @@
 package org.scada_lts.user_management.web.api;
 
 
-import org.scada_lts.user_management.model.dto.UserDto;
 import org.scada_lts.user_management.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,12 +24,17 @@ public class AuthenticationAPI {
 
         try {
 
-            String token = authService.auth(new UserDto(username,passwd));
+            String token = authService.auth(username,passwd);
             return new ResponseEntity<>(token, HttpStatus.OK);
 
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+    public Boolean auth(@RequestBody String token) {
+        return authService.auth(token);
     }
 
 }
