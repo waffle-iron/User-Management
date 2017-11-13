@@ -4,12 +4,21 @@ import java.util.List;
 
 public class EntityIdentity {
 
+    private Long id;
     private String identityId;
     private List<EntityClass> entitiesClass;
     private List<EntityIdentity> entitiesIdentity;
 
     private EntityIdentity parent;
     private Sid owner;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getIdentityId() {
         return identityId;
@@ -49,5 +58,9 @@ public class EntityIdentity {
 
     public void setParent(EntityIdentity parent) {
         this.parent = parent;
+    }
+
+    public List<EntityIdentity> getEntitiesIdentity() {
+        return entitiesIdentity;
     }
 }

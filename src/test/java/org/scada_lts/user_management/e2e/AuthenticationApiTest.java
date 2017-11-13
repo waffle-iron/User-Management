@@ -62,7 +62,6 @@ public class AuthenticationApiTest {
         //TODO
         String jsonBody = "";
 
-
             this.mockMvc.perform(post("/auth")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(jsonBody))

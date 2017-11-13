@@ -4,9 +4,18 @@ import java.util.List;
 
 public class Entry {
 
+    private Long id;
     private List<EntityIdentity> entities;
     private Byte mask;
     private Sid sid;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public List<EntityIdentity> getEntities() {
         return entities;

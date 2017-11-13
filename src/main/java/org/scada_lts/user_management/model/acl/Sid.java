@@ -2,14 +2,23 @@ package org.scada_lts.user_management.model.acl;
 
 public class Sid {
 
-    private Integer principal;
+    private Long id;
+    private Long principal;
     private String Sid;
 
-    public Integer getPrincipal() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPrincipal() {
         return principal;
     }
 
-    public void setPrincipal(Integer principal) {
+    public void setPrincipal(Long principal) {
         this.principal = principal;
     }
 
@@ -20,4 +29,5 @@ public class Sid {
     public void setSid(String sid) {
         Sid = sid;
     }
+
 }
