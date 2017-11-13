@@ -16,7 +16,6 @@ plugins {
 cobertura.coverageFormats = ['html', 'xml']
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
@@ -40,4 +39,9 @@ dependencies {
     // tag::tests[]
     testCompile("org.springframework.boot:spring-boot-starter-test")
     // end::tests[]
+
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.0'
+
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
+
 }
