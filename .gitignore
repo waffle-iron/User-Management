@@ -24,3 +24,5 @@ hs_err_pid*
 build/
 bin/
 user-management.iml
+User-Management.ipr
+User-Management.iws
