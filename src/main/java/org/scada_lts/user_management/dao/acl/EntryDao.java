@@ -1,12 +1,14 @@
 package org.scada_lts.user_management.dao.acl;
 
 import org.scada_lts.user_management.model.acl.Entry;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository("entryDao")
 public class EntryDao implements AclDao<Entry> {
 
     private Map<Long, Entry> entres = new HashMap<>();

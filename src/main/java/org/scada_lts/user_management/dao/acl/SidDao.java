@@ -1,12 +1,14 @@
 package org.scada_lts.user_management.dao.acl;
 
 import org.scada_lts.user_management.model.acl.Sid;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository("sidDao")
 public class SidDao implements AclDao<Sid> {
 
     private Map<Long, Sid> sids = new HashMap<>();
