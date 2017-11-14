@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.service;
+package org.scada_lts.user_management.service.security;
 
 
 import io.jsonwebtoken.Claims;

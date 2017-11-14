@@ -1,8 +1,8 @@
-package org.scada_lts.user_management.service.acl;
+package org.scada_lts.user_management.dao.acl;
 
 import java.util.List;
 
-public interface AclService<T> {
+public interface AclDao<T> {
 
     T create(T elm);
 

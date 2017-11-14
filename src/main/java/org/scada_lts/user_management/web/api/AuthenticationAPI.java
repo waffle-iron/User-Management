@@ -1,7 +1,7 @@
 package org.scada_lts.user_management.web.api;
 
 
-import org.scada_lts.user_management.service.AuthenticationService;
+import org.scada_lts.user_management.service.security.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

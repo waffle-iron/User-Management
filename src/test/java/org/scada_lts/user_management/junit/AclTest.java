@@ -8,38 +8,38 @@ import org.scada_lts.user_management.model.acl.EntityClass;
 import org.scada_lts.user_management.model.acl.EntityIdentity;
 import org.scada_lts.user_management.model.acl.Entry;
 import org.scada_lts.user_management.model.acl.Sid;
-import org.scada_lts.user_management.service.acl.EntityClassService;
-import org.scada_lts.user_management.service.acl.EntityIdentityService;
-import org.scada_lts.user_management.service.acl.EntryService;
-import org.scada_lts.user_management.service.acl.SidService;
+import org.scada_lts.user_management.dao.acl.EntityClassDao;
+import org.scada_lts.user_management.dao.acl.EntityIdentityDao;
+import org.scada_lts.user_management.dao.acl.EntryDao;
+import org.scada_lts.user_management.dao.acl.SidDao;
 
 import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
 public class AclTest {
 
-    private SidService sidService;
-    private EntityClassService entityClassService;
-    private EntityIdentityService entityIdentityService;
-    private EntryService entryService;
+    private SidDao sidService;
+    private EntityClassDao entityClassService;
+    private EntityIdentityDao entityIdentityService;
+    private EntryDao entryService;
 
     @Before
     public void init() {
 
         // sid
-        sidService = new SidService();
+        sidService = new SidDao();
         sidService.create(new Sid(1L,"john"));
         sidService.create(new Sid(1L,"jane"));
         sidService.create(new Sid(1L, "mike"));
 
         // class
-        entityClassService = new EntityClassService();
+        entityClassService = new EntityClassDao();
         entityClassService.create(new EntityClass("org.scada_lts.domain.DataSource"));
         entityClassService.create(new EntityClass("org.scada_lts.domain.Point"));
         entityClassService.create(new EntityClass("org.scada_lts.domain.View"));
 
         // entity identity
-        entityIdentityService = new EntityIdentityService();
+        entityIdentityService = new EntityIdentityDao();
 
         entityIdentityService.create(
                 new EntityIdentity(
@@ -129,7 +129,7 @@ public class AclTest {
 
         // entry
 
-        entryService = new EntryService();
+        entryService = new EntryDao();
 
         //1
         entryService.create(

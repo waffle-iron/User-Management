@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.service.acl;
+package org.scada_lts.user_management.dao.acl;
 
 import org.scada_lts.user_management.model.acl.Sid;
 
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SidService implements AclService<Sid> {
+public class SidDao implements AclDao<Sid> {
 
     private Map<Long, Sid> sids = new HashMap<>();
     //TODO dao

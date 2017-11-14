@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.service.acl;
+package org.scada_lts.user_management.dao.acl;
 
 import org.scada_lts.user_management.model.acl.EntityClass;
 
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EntityClassService implements AclService<EntityClass> {
+public class EntityClassDao implements AclDao<EntityClass> {
 
     private Map<Long, EntityClass> entity = new HashMap<>();
     //TODO dao
