@@ -1,10 +1,23 @@
 package org.scada_lts.user_management.model.acl;
 
-public class Sid {
+import java.io.Serializable;
+
+public class Sid implements Serializable{
+
+    private static final long serialVersionUID = -4605852659773676229L;
 
     private Long id;
     private Long principal;
-    private String Sid;
+    private String sid;
+
+    public Sid() {
+        //
+    }
+
+    public Sid(Long principal, String sid) {
+        this.principal = principal;
+        this.sid = sid;
+    }
 
     public Long getId() {
         return id;
@@ -23,11 +36,11 @@ public class Sid {
     }
 
     public String getSid() {
-        return Sid;
+        return sid;
     }
 
     public void setSid(String sid) {
-        Sid = sid;
+        this.sid = sid;
     }
 
 }

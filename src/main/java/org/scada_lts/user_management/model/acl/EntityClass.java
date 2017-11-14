@@ -1,9 +1,20 @@
 package org.scada_lts.user_management.model.acl;
 
-public class EntityClass {
+import java.io.Serializable;
 
+public class EntityClass implements Serializable {
+
+    private static final long serialVersionUID = -5556324863284690511L;
     private Long id;
     private String className;
+
+    public EntityClass() {
+        //
+    }
+
+    public EntityClass(String className) {
+        this.className = className;
+    }
 
     public Long getId() {
         return id;

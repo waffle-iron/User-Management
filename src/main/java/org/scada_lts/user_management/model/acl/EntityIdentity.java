@@ -1,16 +1,37 @@
 package org.scada_lts.user_management.model.acl;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class EntityIdentity {
+public class EntityIdentity implements Serializable {
 
+    private static final long serialVersionUID = 7079348216095537647L;
     private Long id;
     private String identityId;
-    private List<EntityClass> entitiesClass;
-    private List<EntityIdentity> entitiesIdentity;
+    private EntityClass entityClass;
+    private EntityIdentity entityIdentity;
 
     private EntityIdentity parent;
     private Sid owner;
+
+    public EntityIdentity() {
+        //
+    }
+
+    public EntityIdentity(String identityId, EntityClass entityClass, EntityIdentity entityIdentity, EntityIdentity parent, Sid owner) {
+        this.identityId = identityId;
+        this.entityClass = entityClass;
+        this.entityIdentity = entityIdentity;
+        this.parent = parent;
+        this.owner = owner;
+    }
+
+    public EntityIdentity(String identityId, EntityClass entityClass, EntityIdentity parent, Sid owner) {
+        this.identityId = identityId;
+        this.entityClass = entityClass;
+        this.entityIdentity = this;
+        this.parent = parent;
+        this.owner = owner;
+    }
 
     public Long getId() {
         return id;
@@ -28,20 +49,20 @@ public class EntityIdentity {
         this.identityId = identityId;
     }
 
-    public List<EntityClass> getEntitiesClass() {
-        return entitiesClass;
+    public EntityClass getEntityClass() {
+        return entityClass;
     }
 
-    public void setEntitiesClass(List<EntityClass> entitiesClass) {
-        this.entitiesClass = entitiesClass;
+    public void setEntityClass(EntityClass entityClass) {
+        this.entityClass = entityClass;
     }
 
-    public List<EntityIdentity> getEntitiesInstance() {
-        return entitiesIdentity;
+    public EntityIdentity getEntityInstance() {
+        return entityIdentity;
     }
 
-    public void setEntitiesIdentity(List<EntityIdentity> entitiesIdentity) {
-        this.entitiesIdentity = entitiesIdentity;
+    public void setEntityIdentity(EntityIdentity entityIdentity) {
+        this.entityIdentity = entityIdentity;
     }
 
     public Sid getOwner() {
@@ -60,7 +81,7 @@ public class EntityIdentity {
         this.parent = parent;
     }
 
-    public List<EntityIdentity> getEntitiesIdentity() {
-        return entitiesIdentity;
+    public EntityIdentity getEntityIdentity() {
+        return entityIdentity;
     }
 }
