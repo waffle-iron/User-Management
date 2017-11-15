@@ -13,18 +13,14 @@ public class SidDao implements AclDao<Sid> {
 
     private Map<Long, Sid> sids = new HashMap<>();
     //TODO dao
-    private long incrementId = 0L;
-    private long generateId() {
-        incrementId = incrementId++;
-        return incrementId;
-    }
 
     @Override
     public Sid create(Sid elm) {
 
         //TODO DAO
-        elm.setId(generateId());
-        sids.put(incrementId, elm);
+        long id = sids.size()+1;
+        elm.setId(id);
+        sids.put(id, elm);
         return elm;
         //
     }

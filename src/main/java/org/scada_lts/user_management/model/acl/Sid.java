@@ -43,4 +43,32 @@ public class Sid implements Serializable{
         this.sid = sid;
     }
 
+    @Override
+    public String toString() {
+        return "Sid{" +
+                "id=" + id +
+                ", principal=" + principal +
+                ", sid='" + sid + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Sid sid1 = (Sid) o;
+
+        if (id != null ? !id.equals(sid1.id) : sid1.id != null) return false;
+        if (principal != null ? !principal.equals(sid1.principal) : sid1.principal != null) return false;
+        return sid != null ? sid.equals(sid1.sid) : sid1.sid == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (principal != null ? principal.hashCode() : 0);
+        result = 31 * result + (sid != null ? sid.hashCode() : 0);
+        return result;
+    }
 }

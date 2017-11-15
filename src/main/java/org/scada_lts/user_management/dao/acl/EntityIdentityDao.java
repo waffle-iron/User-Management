@@ -13,16 +13,12 @@ public class EntityIdentityDao implements AclDao<EntityIdentity> {
 
     private Map<Long, EntityIdentity> entity = new HashMap<>();
     //TODO dao
-    private long incrementId = 0L;
-    private long generateId() {
-        incrementId = incrementId++;
-        return incrementId;
-    }
 
     @Override
     public EntityIdentity create(EntityIdentity elm) {
-        elm.setId(generateId());
-        entity.put(incrementId, elm);
+        long id = entity.size()+1;
+        elm.setId(id);
+        entity.put(id, elm);
         return elm;
     }
 

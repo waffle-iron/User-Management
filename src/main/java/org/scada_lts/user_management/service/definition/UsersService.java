@@ -35,7 +35,7 @@ public class UsersService {
         return user;
     }
 
-    public void dell(UserDto userDto) {
+    public void del(UserDto userDto) {
       User userToRemove =  users.get(userDto.getId());
       userNames.remove(userToRemove);
       users.remove(userToRemove);

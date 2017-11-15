@@ -13,17 +13,13 @@ public class EntryDao implements AclDao<Entry> {
 
     private Map<Long, Entry> entres = new HashMap<>();
     //TODO dao
-    private long incrementId = 0L;
-    private long generateId() {
-        incrementId = incrementId++;
-        return incrementId;
-    }
 
     @Override
     public Entry create(Entry elm) {
         //TODO DAO
-        elm.setId(generateId());
-        entres.put(incrementId, elm);
+        long id = entres.size()+1;
+        elm.setId(id);
+        entres.put(id, elm);
 
         return elm;
     }

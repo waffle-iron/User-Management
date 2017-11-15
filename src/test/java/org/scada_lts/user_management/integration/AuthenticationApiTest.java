@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.e2e;
+package org.scada_lts.user_management.integration;
 
 import org.junit.Before;
 import org.junit.Test;
