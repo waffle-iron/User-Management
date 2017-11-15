@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.scada_lts.user_management.model.definition.User;
-import org.scada_lts.user_management.service.security.AuthenticationService;
+import org.scada_lts.user_management.model.dto.UserDto;
 import org.scada_lts.user_management.service.definition.UsersService;
+import org.scada_lts.user_management.service.security.AuthenticationService;
 import org.scada_lts.user_management.web.api.AuthenticationAPI;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,8 +49,8 @@ public class AuthenticationApiTest {
     @Test
     public void getTokenUser() throws Exception {
 
-        when(authService.auth(null,null)).thenReturn("111111111111111");
-        when(usersService.getUser(null)).thenReturn(new User("name","password"));
+        when(authService.auth("user",null)).thenReturn("111111111111111");
+        when(usersService.getUser("name")).thenReturn(new UserDto("name"));
         this.mockMvc.perform(post("/auth/name/password"))
                 .andDo(print()).andExpect(status().isOk());
                 //.andExpect(jsonPath("$.name").value("test"));

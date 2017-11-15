@@ -8,7 +8,6 @@ public class UserDto implements Serializable {
     private String name;
 
     public UserDto() {
-        this.name="test";
     }
 
     public UserDto(String name) {
