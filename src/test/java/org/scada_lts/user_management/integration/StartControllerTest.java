@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.e2e;
+package org.scada_lts.user_management.integration;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.e2e;
+package org.scada_lts.user_management.integration;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.scada_lts.user_management.model.dao.User;
-import org.scada_lts.user_management.service.AuthenticationService;
-import org.scada_lts.user_management.service.UsersService;
+import org.scada_lts.user_management.model.definition.User;
+import org.scada_lts.user_management.service.security.AuthenticationService;
+import org.scada_lts.user_management.service.definition.UsersService;
 import org.scada_lts.user_management.web.api.AuthenticationAPI;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -61,7 +61,6 @@ public class AuthenticationApiTest {
         when(authService.auth("111111")).thenReturn(true);
         //TODO
         String jsonBody = "";
-
 
             this.mockMvc.perform(post("/auth")
                     .contentType(MediaType.APPLICATION_JSON)

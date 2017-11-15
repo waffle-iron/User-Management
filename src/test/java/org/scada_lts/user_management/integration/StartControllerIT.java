@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.e2e;
+package org.scada_lts.user_management.integration;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;

@@ -1,7 +1,8 @@
-package org.scada_lts.user_management.service;
+package org.scada_lts.user_management.service.security;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.scada_lts.user_management.model.dao.User;
+import org.scada_lts.user_management.model.definition.User;
+import org.scada_lts.user_management.service.definition.UsersService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -38,11 +39,5 @@ public class AuthenticationService {
   public boolean auth(String token) {
       return securityJwtService.checkJwt(token);
   }
-
-
-
-
-
-
 
 }

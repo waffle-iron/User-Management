@@ -1,4 +1,4 @@
-package org.scada_lts.user_management.model.dao;
+package org.scada_lts.user_management.model.definition;
 
 import java.io.Serializable;
 

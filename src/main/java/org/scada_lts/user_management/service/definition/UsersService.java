@@ -1,7 +1,7 @@
-package org.scada_lts.user_management.service;
+package org.scada_lts.user_management.service.definition;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.scada_lts.user_management.model.dao.User;
+import org.scada_lts.user_management.model.definition.User;
 import org.scada_lts.user_management.model.dto.UserDto;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class UsersService {
         return user;
     }
 
-    public void dell(UserDto userDto) {
+    public void del(UserDto userDto) {
       User userToRemove =  users.get(userDto.getId());
       userNames.remove(userToRemove);
       users.remove(userToRemove);
