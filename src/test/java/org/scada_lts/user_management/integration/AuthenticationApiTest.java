@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.scada_lts.user_management.model.dto.UserDto;
-import org.scada_lts.user_management.service.definition.UsersService;
+import org.scada_lts.user_management.service.definition.UsersServiceImp;
 import org.scada_lts.user_management.service.security.AuthenticationService;
 import org.scada_lts.user_management.web.api.AuthenticationAPI;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -31,7 +31,7 @@ public class AuthenticationApiTest {
     private AuthenticationService authService;
 
     @Mock
-    private UsersService usersService;
+    private UsersServiceImp usersService;
 
     @InjectMocks
     private AuthenticationAPI authApi;
