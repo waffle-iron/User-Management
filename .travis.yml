@@ -1,0 +1,14 @@
+language: java
+sudo: false # faster builds
+
+jdk:
+ - oraclejdk8
+script: ./gradlew clean build
+branches:
+  only:
+  - "/^develop.*$/"
+  - "/^master.*$/"
+  - "/^v.*$/"
+
+  after_success:
+  - ./gradlew cobertura coveralls
