@@ -16,7 +16,14 @@ User management for Scada-LTS base on ACL
 
    Linux:```java -jar build/libs/user-management-0.0.1.jar```
  
- 4. Application should be available on address:  ```http://localhost:8080/```
+ 4. Application should be available at address:  ```http://localhost:8080/```
+ 
+ ## Swagger and Postman integration
+Swagger UI API documentation is available at address: ```http://localhost:8080/swagger-ui.html#/```
+
+If you want to import API docs from Swagger to Postman: 
+1. Select "Import from link" at Postman app.
+2. Type URL: ```http://localhost:8080/v2/api-docs```
 
 ## Creators 
 
