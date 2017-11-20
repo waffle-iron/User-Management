@@ -439,6 +439,7 @@ public class AclTest {
 
     @Test
     public void testFilterDataBaseOnACL() {
+        //TODO rewrite to mockito
         PermissionEvaluatorService permissionEvaluatorService = new PermissionEvaluatorService();
         permissionEvaluatorService.setEntryDao(entryDao);
 

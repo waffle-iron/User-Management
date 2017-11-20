@@ -49,11 +49,6 @@ public class PermissionEvaluatorService {
          return false;
     }
 
-    public boolean hasPermission(String role, EntityIdentity entityIdentity, Permission permission) {
-        //TODO
-        return false;
-    }
-
     //TODO rewrite (now only to test)
     public void setEntryDao(EntryDao ed) {
         this.entryDao = ed;
