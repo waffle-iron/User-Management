@@ -26,6 +26,9 @@ import java.util.List;
 /**
  * Class created by Arkadiusz Parafiniuk
  * E-mail: arkadiusz.parafiniuk@gmail.com
+ *
+ * Business logic for entityClass
+ * @see EntityClass
  */
 public class EntityClassServiceImpl implements EntityClassService {
 
