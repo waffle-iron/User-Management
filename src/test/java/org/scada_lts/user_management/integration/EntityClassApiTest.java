@@ -17,8 +17,6 @@
  */
 package org.scada_lts.user_management.integration;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +25,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.scada_lts.user_management.model.acl.EntityClass;
 import org.scada_lts.user_management.service.acl.EntityClassService;
+import org.scada_lts.user_management.tools.JsonConverter;
 import org.scada_lts.user_management.web.api.EntityClassAPI;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -95,7 +94,7 @@ public class EntityClassApiTest {
     public void testCreateEntityClass() throws Exception {
         EntityClass newEntityClass = new EntityClass("testEntityClass");
 
-        String json = toJson(newEntityClass);
+        String json = JsonConverter.getInstance().toJson(newEntityClass);
 
         EntityClass entityClass = new EntityClass(newEntityClass.getClassName());
 
@@ -111,7 +110,7 @@ public class EntityClassApiTest {
     public void testUpdateEntityClass() throws Exception {
         EntityClass newEntityClass = new EntityClass("testEntityClass");
 
-        String json = toJson(newEntityClass);
+        String json = JsonConverter.getInstance().toJson(newEntityClass);
 
         EntityClass entityClass = new EntityClass("testEntityClass");
         EntityClass entityClassChanged = new EntityClass("changed");
@@ -147,15 +146,5 @@ public class EntityClassApiTest {
 
     }
 
-    private String toJson(Object obj) {
-        ObjectMapper mapper = new ObjectMapper();
-        String json = null;
-        try {
-            json = mapper.writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return json;
-    }
 
 }
