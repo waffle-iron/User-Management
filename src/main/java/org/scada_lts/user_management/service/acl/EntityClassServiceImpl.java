@@ -17,8 +17,10 @@
  */
 package org.scada_lts.user_management.service.acl;
 
+import org.scada_lts.user_management.dao.acl.EntityClassDao;
 import org.scada_lts.user_management.model.acl.EntityClass;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -26,33 +28,34 @@ import java.util.List;
  * E-mail: arkadiusz.parafiniuk@gmail.com
  */
 public class EntityClassServiceImpl implements EntityClassService {
+
+    @Resource
+    EntityClassDao entityClassDao;
+
     @Override
     public List<EntityClass> getAll() {
-        return null;
+        return entityClassDao.getAll();
     }
 
     @Override
-    public EntityClass add(String className) {
-        return null;
+    public EntityClass add(EntityClass entityClass) {
+        return entityClassDao.create(entityClass);
     }
 
     @Override
     public void del(EntityClass entityClass) {
-
+        entityClassDao.delete(entityClass);
     }
 
     @Override
     public EntityClass getEntityClass(Long id) {
-        return null;
-    }
-
-    @Override
-    public EntityClass getEntityClass(String className) {
-        return null;
+        return entityClassDao.get(id);
     }
 
     @Override
     public void update(EntityClass entityClass) {
-
+        entityClassDao.update(entityClass);
     }
 }
+
+

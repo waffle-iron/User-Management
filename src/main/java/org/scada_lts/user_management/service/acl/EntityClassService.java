@@ -28,13 +28,11 @@ import java.util.List;
 public interface EntityClassService {
     List<EntityClass> getAll();
 
-    EntityClass add(String className);
+    EntityClass add(EntityClass entityClass);
 
     void del(EntityClass entityClass);
 
     EntityClass getEntityClass(Long id);
-
-    EntityClass getEntityClass(String className);
 
     void update(EntityClass entityClass);
 }
