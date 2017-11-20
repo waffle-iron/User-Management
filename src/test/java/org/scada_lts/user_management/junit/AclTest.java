@@ -13,7 +13,7 @@ import org.scada_lts.user_management.model.acl.EntityIdentity;
 import org.scada_lts.user_management.model.acl.Entry;
 import org.scada_lts.user_management.model.acl.Sid;
 import org.scada_lts.user_management.model.security.Permission;
-import org.scada_lts.user_management.service.acl.PermissionEvaluatorService;
+import org.scada_lts.user_management.service.acl.PermissionEvaluatorServiceImp;
 
 import java.util.List;
 
@@ -440,7 +440,7 @@ public class AclTest {
     @Test
     public void testFilterDataBaseOnACL() {
         //TODO rewrite to mockito
-        PermissionEvaluatorService permissionEvaluatorService = new PermissionEvaluatorService();
+        PermissionEvaluatorServiceImp permissionEvaluatorService = new PermissionEvaluatorServiceImp();
         permissionEvaluatorService.setEntryDao(entryDao);
 
         Sid sid = sidDao.get(1L);
@@ -454,7 +454,7 @@ public class AclTest {
 
     @Test
     public void testHasPermissionSid() {
-        PermissionEvaluatorService permissionEvaluatorService = new PermissionEvaluatorService();
+        PermissionEvaluatorServiceImp permissionEvaluatorService = new PermissionEvaluatorServiceImp();
         permissionEvaluatorService.setEntryDao(entryDao);
 
         Sid sid = sidDao.get(1L);

@@ -15,23 +15,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.scada_lts.user_management.service.acl;
-
-import org.scada_lts.user_management.model.acl.EntityClass;
-import org.scada_lts.user_management.model.acl.EntityIdentity;
-import org.scada_lts.user_management.model.acl.Entry;
-import org.scada_lts.user_management.model.acl.Sid;
-import org.scada_lts.user_management.model.security.Permission;
-
-import java.util.List;
+package org.scada_lts.user_management.integration;
 
 /**
  * @author Grzegorz Bylica grzegorz.bylica@gmail.com
  **/
-public interface PermissionEvaluatorService {
+public class PermissionEvaluatorApiTest {
 
-    List<Entry> filterDataBaseOnACL(Sid sid, EntityClass entityClass, Permission permision);
 
-    boolean hasPermission(Sid sid, EntityIdentity entityIdentity, Permission permision);
 
 }
