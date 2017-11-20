@@ -92,7 +92,7 @@ public class EntityClassApiTest {
     }
 
     @Test
-    public void testCreateUser() throws Exception {
+    public void testCreateEntityClass() throws Exception {
         EntityClass newEntityClass = new EntityClass("testEntityClass");
 
         String json = toJson(newEntityClass);
@@ -108,7 +108,7 @@ public class EntityClassApiTest {
     }
 
     @Test
-    public void testUpdateUser() throws Exception {
+    public void testUpdateEntityClass() throws Exception {
         EntityClass newEntityClass = new EntityClass("testEntityClass");
 
         String json = toJson(newEntityClass);
