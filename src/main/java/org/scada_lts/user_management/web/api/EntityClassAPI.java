@@ -31,8 +31,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Class created by Arkadiusz Parafiniuk
- * E-mail: arkadiusz.parafiniuk@gmail.com
+ * @Author Arkadiusz Parafiniuk arkadiusz.parafiniuk@gmail.com
  *
  * Controller for EntityClass
  * @see EntityClass
