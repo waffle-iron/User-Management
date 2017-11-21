@@ -53,7 +53,7 @@ public class EntityIdentityAPI {
         List<EntityIdentity> entityIdentities = entityIdentityService.getAll();
         if (entityIdentities.isEmpty()) {
             LOG.warn("entityIdentities is empty");
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<EntityIdentity>>(entityIdentities, HttpStatus.OK);
 

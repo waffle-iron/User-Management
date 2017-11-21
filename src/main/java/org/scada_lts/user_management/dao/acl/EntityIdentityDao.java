@@ -17,6 +17,8 @@
  */
 package org.scada_lts.user_management.dao.acl;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.scada_lts.user_management.model.acl.EntityIdentity;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +34,8 @@ import java.util.Map;
  */
 @Repository("entityIdentityDao")
 public class EntityIdentityDao implements AclDao<EntityIdentity> {
+
+    private static final Log LOG = LogFactory.getLog(EntityIdentityDao.class);
 
     private Map<Long, EntityIdentity> entity = new HashMap<>();
     //TODO dao

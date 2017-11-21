@@ -34,7 +34,7 @@ import java.util.List;
 public class EntityIdentityServiceImpl implements EntityIdentityService {
 
     @Resource
-    EntityIdentityDao entityIdentityDao;
+    private EntityIdentityDao entityIdentityDao;
 
     @Override
     public List<EntityIdentity> getAll() {
