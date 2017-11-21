@@ -47,7 +47,7 @@ public class SidServiceImpl implements SidService {
     }
 
     @Override
-    public void del(Sid sid) {
+    public void delete(Sid sid) {
         sidDao.delete(sid);
     }
 

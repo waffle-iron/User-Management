@@ -72,7 +72,7 @@ public class EntityClassAPI {
         return new ResponseEntity<EntityClass>(entityClass, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "entityClass/", method = RequestMethod.POST)
+    @RequestMapping(value = "/entityClass/", method = RequestMethod.POST)
     public ResponseEntity<?> createEntityClass(@RequestBody EntityClass entityClass, UriComponentsBuilder ucBuilder) {
 
         LOG.info("POST /entityClass/ entityClass:"+ entityClass);
@@ -117,7 +117,7 @@ public class EntityClassAPI {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
-        entityClassService.del(entityClass);
+        entityClassService.delete(entityClass);
         return new ResponseEntity(HttpStatus.OK);
     }
 

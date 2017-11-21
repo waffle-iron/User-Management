@@ -32,7 +32,7 @@ public interface EntityIdentityService {
 
     EntityIdentity add(EntityIdentity entityIdentity);
 
-    void del(EntityIdentity entityIdentity);
+    void delete(EntityIdentity entityIdentity);
 
     EntityIdentity getEntityIdentity(Long id);
 

@@ -47,7 +47,7 @@ public class EntityClassServiceImpl implements EntityClassService {
     }
 
     @Override
-    public void del(EntityClass entityClass) {
+    public void delete(EntityClass entityClass) {
         entityClassDao.delete(entityClass);
     }
 

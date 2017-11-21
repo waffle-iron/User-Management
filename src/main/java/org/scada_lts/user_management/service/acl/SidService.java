@@ -32,7 +32,7 @@ public interface SidService {
 
     Sid add(Sid sid);
 
-    void del(Sid sid);
+    void delete(Sid sid);
 
     Sid getSid(Long id);
 

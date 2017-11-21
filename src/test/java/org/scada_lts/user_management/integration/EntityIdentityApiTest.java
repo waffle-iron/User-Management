@@ -98,20 +98,25 @@ public class EntityIdentityApiTest {
     @Test
     public void testUpdateEntityIdentity() throws Exception {
         EntityIdentity newEntityIdentity = new EntityIdentity();
+        newEntityIdentity.setId(1L);
 
         String json = JsonConverter.getInstance().toJson(newEntityIdentity);
 
         EntityIdentity entityIdentity = new EntityIdentity();
         entityIdentity.setIdentityId("testIdentity");
-
-        EntityIdentity entityIdentityChanged = new EntityIdentity();
-        entityIdentityChanged.setIdentityId("changed");
+        entityIdentity.setId(123L);
 
         when(entityIdentityService.getEntityIdentity(1L)).thenReturn(entityIdentity);
 
         mockMvc.perform(
                 put("/api/entityIdentity/1").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().isOk());
+
+        newEntityIdentity.setId(2L);
+        json = JsonConverter.getInstance().toJson(newEntityIdentity);
+        mockMvc.perform(
+                put("/api/entityIdentity/1").contentType(MediaType.APPLICATION_JSON).content(json))
+                .andExpect(status().isBadRequest());
     }
 
     @Test

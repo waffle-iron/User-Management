@@ -40,6 +40,12 @@ public class Sid implements Serializable{
         this.sid = sid;
     }
 
+    public Sid(Sid sid) {
+        this.id = sid.getId();
+        this.principal = sid.getPrincipal();
+        this.sid = sid.getSid();
+    }
+
     public Long getId() {
         return id;
     }
