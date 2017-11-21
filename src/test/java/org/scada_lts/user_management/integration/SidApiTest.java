@@ -23,10 +23,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.scada_lts.user_management.model.acl.EntityIdentity;
-import org.scada_lts.user_management.service.acl.EntityIdentityService;
+import org.scada_lts.user_management.model.acl.Sid;
+import org.scada_lts.user_management.service.acl.SidService;
 import org.scada_lts.user_management.tools.JsonConverter;
-import org.scada_lts.user_management.web.api.EntityIdentityAPI;
+import org.scada_lts.user_management.web.api.SidAPI;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -38,9 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -51,13 +49,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EntityIdentityApiTest {
+public class SidApiTest {
 
     @Mock
-    EntityIdentityService entityIdentityService;
+    SidService sidService;
 
     @InjectMocks
-    private EntityIdentityAPI entityIdentityAPI;
+    private SidAPI sidAPI;
 
     private MockMvc mockMvc;
 
@@ -65,80 +63,78 @@ public class EntityIdentityApiTest {
     public void init(){
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders
-                .standaloneSetup(entityIdentityAPI)
+                .standaloneSetup(sidAPI)
                 .build();
     }
 
     @Test
-    public void testGetListEntityIdentities() throws Exception {
-        List<EntityIdentity> entityIdentities = new ArrayList<>();
-        EntityIdentity entityIdentity = new EntityIdentity();
-        entityIdentity.setIdentityId("test");
-        entityIdentity.setId(1L);
+    public void testGetListSids() throws Exception {
+        List<Sid> sids = new ArrayList<>();
+        Sid sid = new Sid();
+        sid.setSid("test");
+        sid.setId(1L);
 
-        entityIdentities.add(entityIdentity);
-        when(entityIdentityService.getAll()).thenReturn(entityIdentities);
-        this.mockMvc.perform(get("/api/entityIdentity/"))
+        sids.add(sid);
+        when(sidService.getAll()).thenReturn(sids);
+        this.mockMvc.perform(get("/api/sid/"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.[0].identityId").value("test"))
+                .andExpect(jsonPath("$.[0].sid").value("test"))
                 .andExpect(jsonPath("$.[0].id").value("1"));
     }
 
     @Test
-    public void testGetEntityIdentity() throws Exception {
-        EntityIdentity entityIdentity = new EntityIdentity();
-        entityIdentity.setId(12345678L);
-        when(entityIdentityService.getEntityIdentity(1L)).thenReturn(entityIdentity);
+    public void testGetSid() throws Exception {
+        Sid sid = new Sid();
+        sid.setId(12345678L);
+        when(sidService.getSid(1L)).thenReturn(sid);
 
-        this.mockMvc.perform(get("/api/entityIdentity/1"))
+        this.mockMvc.perform(get("/api/sid/1"))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value("12345678"));
     }
 
     @Test
-    public void testUpdateEntityIdentity() throws Exception {
-        EntityIdentity newEntityIdentity = new EntityIdentity();
-        newEntityIdentity.setId(1L);
+    public void testUpdateSid() throws Exception {
+        Sid newSid = new Sid();
+        newSid.setId(1L);
 
-        String json = JsonConverter.getInstance().toJson(newEntityIdentity);
+        String json = JsonConverter.getInstance().toJson(newSid);
 
-        EntityIdentity entityIdentity = new EntityIdentity();
-        entityIdentity.setIdentityId("testIdentity");
-        entityIdentity.setId(123L);
+        Sid sid = new Sid();
+        sid.setSid("testSid");
+        sid.setId(123L);
 
-        when(entityIdentityService.getEntityIdentity(1L)).thenReturn(entityIdentity);
+        when(sidService.getSid(1L)).thenReturn(sid);
 
         mockMvc.perform(
-                put("/api/entityIdentity/1").contentType(MediaType.APPLICATION_JSON).content(json))
+                put("/api/sid/1").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().isOk());
 
-        newEntityIdentity.setId(2L);
-        json = JsonConverter.getInstance().toJson(newEntityIdentity);
+        newSid.setId(2L);
+        json = JsonConverter.getInstance().toJson(newSid);
         mockMvc.perform(
-                put("/api/entityIdentity/1").contentType(MediaType.APPLICATION_JSON).content(json))
+                put("/api/sid/1").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void testDeleteEntityIdentity() throws Exception {
-        EntityIdentity entityIdentity = new EntityIdentity();
-        when(entityIdentityService.getEntityIdentity(1L)).thenReturn(entityIdentity);
+    public void testDeleteSid() throws Exception {
+        Sid sid = new Sid();
+        when(sidService.getSid(1L)).thenReturn(sid);
 
         mockMvc.perform(
-                delete("/api/entityIdentity/1"))
+                delete("/api/sid/1"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void testDeleteAllEntityIdentities() throws Exception {
+    public void testDeleteAllSids() throws Exception {
 
         mockMvc.perform(
-                delete("/api/entityIdentity/"))
+                delete("/api/sid/"))
                 .andDo(print())
                 .andExpect(status().isNotImplemented());
 
     }
-
-
 }

@@ -72,7 +72,7 @@ public class EntityIdentityAPI {
         return new ResponseEntity<EntityIdentity>(entityIdentity, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "entityIdentity/", method = RequestMethod.POST)
+    @RequestMapping(value = "/entityIdentity/", method = RequestMethod.POST)
     public ResponseEntity<?> createEntityIdentity(@RequestBody EntityIdentity entityIdentity, UriComponentsBuilder ucBuilder) {
 
         LOG.info("POST /entityIdentity/ entityIdentity:"+ entityIdentity);
@@ -92,17 +92,21 @@ public class EntityIdentityAPI {
 
         LOG.info("PUT /entityIdentity/{id} id:"+id);
 
-        EntityIdentity currentEntityIdentity = entityIdentityService.getEntityIdentity(id);
+        EntityIdentity oldEntityIdentity = entityIdentityService.getEntityIdentity(id);
 
-        if (currentEntityIdentity == null) {
+        if (oldEntityIdentity == null) {
             LOG.warn("entityIdentity id:"+id+" is not found");
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
-        currentEntityIdentity.setEntityIdentity(entityIdentity);
-        entityIdentityService.update(currentEntityIdentity);
+        if (entityIdentity.getId()!=id) {
+            LOG.warn("id conflict");
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
 
-        return new ResponseEntity<EntityIdentity>(currentEntityIdentity, HttpStatus.OK);
+        entityIdentityService.update(entityIdentity);
+
+        return new ResponseEntity<EntityIdentity>(entityIdentity, HttpStatus.OK);
 
     }
 
@@ -117,7 +121,7 @@ public class EntityIdentityAPI {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
-        entityIdentityService.del(entityIdentity);
+        entityIdentityService.delete(entityIdentity);
         return new ResponseEntity(HttpStatus.OK);
     }
 

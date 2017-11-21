@@ -55,6 +55,14 @@ public class EntityIdentity implements Serializable {
         this.owner = owner;
     }
 
+    public EntityIdentity(EntityIdentity entityIdentity) {
+        this.identityId = entityIdentity.getIdentityId();
+        this.entityClass = entityIdentity.getEntityClass();
+        this.entityIdentity = entityIdentity.getEntityIdentity();
+        this.parent = entityIdentity.getParent();
+        this.owner = entityIdentity.getOwner();
+    }
+
     public Long getId() {
         return id;
     }
