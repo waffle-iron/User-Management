@@ -17,24 +17,24 @@
  */
 package org.scada_lts.user_management.service.acl;
 
-import org.scada_lts.user_management.model.acl.EntityClass;
+import org.scada_lts.user_management.model.acl.Sid;
 
 import java.util.List;
 
 /**
  * @Author Arkadiusz Parafiniuk arkadiusz.parafiniuk@gmail.com
  *
- * Business logic for entityClass
- * @see EntityClass
+ * Business logic for Sid
+ * @see Sid
  */
-public interface EntityClassService {
-    List<EntityClass> getAll();
+public interface SidService {
+    List<Sid> getAll();
 
-    EntityClass add(EntityClass entityClass);
+    Sid add(Sid sid);
 
-    void del(EntityClass entityClass);
+    void del(Sid sid);
 
-    EntityClass getEntityClass(Long id);
+    Sid getSid(Long id);
 
-    void update(EntityClass entityClass);
+    void update(Sid sid);
 }
