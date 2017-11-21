@@ -34,7 +34,7 @@ import java.util.List;
  * @Author Arkadiusz Parafiniuk arkadiusz.parafiniuk@gmail.com
  *
  * Controller for EntityIdentity
- * @see org.scada_lts.user_management.model.acl.EntityIdentity
+ * @see EntityIdentity
  */
 @RestController
 @RequestMapping("/api")
