@@ -1,7 +1,5 @@
 package org.scada_lts.user_management.integration;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import org.scada_lts.user_management.model.dto.InputUser;
 import org.scada_lts.user_management.model.dto.UserDto;
 import org.scada_lts.user_management.service.definition.UsersService;
+import org.scada_lts.user_management.tools.JsonConverter;
 import org.scada_lts.user_management.web.api.UserAPI;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -79,7 +78,7 @@ public class UserApiTest {
 
         InputUser inputUser = new InputUser("admin","admin");
 
-        String json = toJson(inputUser);
+        String json = JsonConverter.getInstance().toJson(inputUser);
 
         UserDto userDto = new UserDto(inputUser.getName());
 
@@ -95,7 +94,7 @@ public class UserApiTest {
     public void testUpdateUser() throws Exception {
         InputUser inputUser = new InputUser("admin", "admin");
 
-        String json = toJson(inputUser);
+        String json = JsonConverter.getInstance().toJson(inputUser);
 
         UserDto userDto = new UserDto("admin");
         UserDto userDtoChanged = new UserDto("changed");
@@ -132,20 +131,5 @@ public class UserApiTest {
                 .andExpect(status().isNotImplemented());
 
     }
-
-    private String toJson(Object obj) {
-        ObjectMapper mapper = new ObjectMapper();
-        String json = null;
-        try {
-            json = mapper.writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return json;
-    }
-
-
-
-
 
 }

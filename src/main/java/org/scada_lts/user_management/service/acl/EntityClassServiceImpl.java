@@ -19,17 +19,18 @@ package org.scada_lts.user_management.service.acl;
 
 import org.scada_lts.user_management.dao.acl.EntityClassDao;
 import org.scada_lts.user_management.model.acl.EntityClass;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Class created by Arkadiusz Parafiniuk
- * E-mail: arkadiusz.parafiniuk@gmail.com
+ * @Author Arkadiusz Parafiniuk arkadiusz.parafiniuk@gmail.com
  *
  * Business logic for entityClass
  * @see EntityClass
  */
+@Service
 public class EntityClassServiceImpl implements EntityClassService {
 
     @Resource
