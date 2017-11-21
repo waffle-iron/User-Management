@@ -30,10 +30,19 @@ public class InputFilterAcl {
     private EntityClass entityClass;
     private Permission permision;
 
+    /**
+     * Constructor maker "InputFilterAcl"
+     */
     public InputFilterAcl() {
         //
     }
 
+    /**
+     * Constructor maker "InputFilterAcl"
+     * @param sid
+     * @param entityClass
+     * @param permision
+     */
     public InputFilterAcl(Sid sid, EntityClass entityClass, Permission permision) {
         this.sid = sid;
         this.entityClass = entityClass;
