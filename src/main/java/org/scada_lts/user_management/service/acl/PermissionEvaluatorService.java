@@ -1,59 +1,37 @@
+/*
+ * (c) 2017 Abil'I.T. http://abilit.eu/
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package org.scada_lts.user_management.service.acl;
 
-import org.scada_lts.user_management.dao.acl.EntryDao;
 import org.scada_lts.user_management.model.acl.EntityClass;
 import org.scada_lts.user_management.model.acl.EntityIdentity;
 import org.scada_lts.user_management.model.acl.Entry;
 import org.scada_lts.user_management.model.acl.Sid;
 import org.scada_lts.user_management.model.security.Permission;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class PermissionEvaluatorService {
+/**
+ * @author Grzegorz Bylica grzegorz.bylica@gmail.com
+ **/
+public interface PermissionEvaluatorService {
 
-    @Resource
-    private EntryDao entryDao;
+    List<Entry> filterDataBaseOnACL(Sid sid, EntityClass entityClass, Permission permision);
 
-    public List<Entry> filterDataBaseOnACL(Sid sid, EntityClass entityClass, Permission permision) {
-        //TODO rewrite to 1.8
-        List<Entry> entries = entryDao.getAll();
-        List<Entry> result = new ArrayList();
-        for (Entry entry : entries) {
-            if (entry.getSid().equals(sid)) {
-                if (entry.getEntity().getEntityClass().equals(entityClass)) {
-                    if (entry.getMask().equals(permision.getMask())) {
-                        result.add(entry);
-                    }
-                }
-
-            }
-        }
-       return result;
-    }
-
-    public boolean hasPermission(Sid sid, EntityIdentity entityIdentity, Permission permision) {
-         List<Entry> entries = entryDao.getAll();
-         for (Entry entry : entries) {
-             if (entry.getSid().equals(sid)) {
-                 if (entry.getEntity().getEntityIdentity().equals(entityIdentity)) {
-                     if (entry.getMask().equals(permision.getMask())){
-                         return true;
-                     }
-                 }
-             }
-         }
-         return false;
-    }
-
-    //TODO rewrite (now only to test)
-    public void setEntryDao(EntryDao ed) {
-        this.entryDao = ed;
-    }
-
-
+    boolean hasPermission(Sid sid, EntityIdentity entityIdentity, Permission permision);
 
 }
