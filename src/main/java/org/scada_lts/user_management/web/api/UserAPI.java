@@ -31,7 +31,7 @@ public class UserAPI {
        List<UserDto> users = usersService.getAll();
        if (users.isEmpty()) {
            LOG.warn("users is empty");
-           return new ResponseEntity(HttpStatus.NOT_FOUND);
+           return new ResponseEntity(HttpStatus.NO_CONTENT);
        }
        return new ResponseEntity<List<UserDto>>(users, HttpStatus.OK);
 
