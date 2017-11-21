@@ -21,11 +21,14 @@ import org.scada_lts.user_management.model.acl.EntityIdentity;
 import org.scada_lts.user_management.model.acl.Sid;
 import org.scada_lts.user_management.model.security.Permission;
 
+import java.io.Serializable;
+
 /**
  * @author Grzegorz Bylica grzegorz.bylica@gmail.com
  **/
-public class InputHasPermission {
+public class InputHasPermission implements Serializable{
 
+    private static final long serialVersionUID = 7149350161581870280L;
     private Sid sid;
     private EntityIdentity entityIdentity;
     private Permission permission;
