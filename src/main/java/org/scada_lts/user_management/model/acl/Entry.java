@@ -44,6 +44,13 @@ public class Entry implements Serializable {
         this.mask = mask;
     }
 
+    public Entry(Entry entry) {
+        this.entity = entry.getEntity();
+        this.order = entry.getOrder();
+        this.sid = entry.getSid();
+        this.mask = entry.getMask();
+    }
+
     public Long getId() {
         return id;
     }
