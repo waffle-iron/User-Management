@@ -104,14 +104,14 @@ public class EntityIdentityServiceTest {
 
     @Test
     public void testDeleteEntityIdentity() throws Exception {
-        List<EntityIdentity> entityIdentityes = new ArrayList<>();
+        List<EntityIdentity> entityIdentities = new ArrayList<>();
         EntityIdentity entityIdentity = new EntityIdentity();
         entityIdentity.setIdentityId("testIdentity");
         entityIdentity.setId(1L);
-        entityIdentityes.add(entityIdentity);
+        entityIdentities.add(entityIdentity);
 
-        when(entityIdentityDao.getAll()).thenReturn(entityIdentityes);
-        doAnswer(invocation -> entityIdentityes.remove(entityIdentity)).when(entityIdentityDao).delete(entityIdentity);
+        when(entityIdentityDao.getAll()).thenReturn(entityIdentities);
+        doAnswer(invocation -> entityIdentities.remove(entityIdentity)).when(entityIdentityDao).delete(entityIdentity);
 
         assertTrue(entityIdentityService.getAll().contains(entityIdentity));
 
