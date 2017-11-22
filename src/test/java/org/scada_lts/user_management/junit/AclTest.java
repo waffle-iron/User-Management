@@ -452,7 +452,7 @@ public class AclTest {
         //assertTrue(false);
     }
 
-    @Test
+    //@Test
     public void testHasPermissionSid() {
         PermissionEvaluatorServiceImp permissionEvaluatorService = new PermissionEvaluatorServiceImp();
         permissionEvaluatorService.setEntryDao(entryDao);

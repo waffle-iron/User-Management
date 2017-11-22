@@ -60,7 +60,6 @@ public class PopulateTestDataService {
 
         entityClassDao.create(new EntityClass("org.scada_lts.domain.DataSource"));
 
-        // entity identity
         entityIdentityDao.create(
                 new EntityIdentity(
                         "data source id 1",
