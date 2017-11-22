@@ -87,12 +87,12 @@ public class EntryApiTest {
     @Test
     public void testGetEntry() throws Exception {
         Entry entry = new Entry();
-        entry.setId(12345678L);
+        entry.setId(1L);
         when(entryService.getEntry(1L)).thenReturn(entry);
 
         this.mockMvc.perform(get("/api/entry/1"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value("12345678"));
+                .andExpect(jsonPath("$.id").value("1"));
     }
 
     @Test
@@ -103,7 +103,6 @@ public class EntryApiTest {
         String json = JsonConverter.getInstance().toJson(newEntry);
 
         Entry entry = new Entry();
-        entry.setId(123L);
 
         when(entryService.getEntry(1L)).thenReturn(entry);
 
