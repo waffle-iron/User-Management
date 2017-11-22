@@ -2,12 +2,13 @@
 
 [![GitHub license](https://img.shields.io/github/license/SCADA-LTS/User-Management.svg)](https://github.com/SCADA-LTS/User-Management/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/SCADA-LTS/User-Management.svg?branch=develop)](https://travis-ci.org/SCADA-LTS/User-Management)
+[![release](http://github-release-version.herokuapp.com/github/SCADA-LTS/User-Management/release.svg?style=flat)](https://github.com/allure-framework/allure-core/releases/latest)
 
 User management for Scada-LTS base on ACL
 
-## Quick start with InteliJ
+## Quick start with IntelliJ
 
-1. Import project by embedded IntelIJ VCS plugin.
+1. Import project by embedded IntelliJ VCS plugin.
 2. Open terminal in the project main directory and type:
  ```gradlew build clean```
 3. Run project from .jar file by command:
