@@ -120,12 +120,11 @@ public class EntityClassServiceTest {
         when(entityClassDao.getAll()).thenReturn(entityClasses);
         doAnswer(invocation -> entityClasses.remove(entityClass)).when(entityClassDao).delete(entityClass);
 
-        assertTrue(entityClassService.getAll().size()==1);
+        assertTrue(entityClassService.getAll().contains(entityClass));
 
         entityClassService.delete(entityClass);
 
-        assertTrue(entityClassService.getAll().size()==0);
-
+        assertFalse(entityClassService.getAll().contains(entityClass));
     }
 
 
