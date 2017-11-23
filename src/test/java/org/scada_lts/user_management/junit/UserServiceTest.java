@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.scada_lts.user_management.integration;
+package org.scada_lts.user_management.junit;
 
 import org.junit.Before;
 import org.junit.Test;
