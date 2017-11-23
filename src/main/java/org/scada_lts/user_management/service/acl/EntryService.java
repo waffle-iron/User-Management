@@ -17,21 +17,24 @@
  */
 package org.scada_lts.user_management.service.acl;
 
-import org.scada_lts.user_management.model.acl.EntityClass;
-import org.scada_lts.user_management.model.acl.EntityIdentity;
 import org.scada_lts.user_management.model.acl.Entry;
-import org.scada_lts.user_management.model.acl.Sid;
-import org.scada_lts.user_management.model.security.Permission;
 
 import java.util.List;
 
 /**
- * @author Grzegorz Bylica grzegorz.bylica@gmail.com
- **/
-public interface PermissionEvaluatorService {
+ * @Author Arkadiusz Parafiniuk arkadiusz.parafiniuk@gmail.com
+ *
+ * Business logic for Entry
+ * @see Entry
+ */
+public interface EntryService {
+    List<Entry> getAll();
 
-    List<Entry> filterDataBaseOnACL(Sid sid, EntityClass entityClass, Permission permision);
+    Entry add(Entry entry);
 
-    boolean hasPermission(Sid sid, EntityIdentity entityIdentity, Permission permision);
+    void delete(Entry entry);
 
+    Entry getEntry(Long id);
+
+    void update(Entry entry);
 }

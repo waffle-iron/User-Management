@@ -17,21 +17,47 @@
  */
 package org.scada_lts.user_management.service.acl;
 
-import org.scada_lts.user_management.model.acl.EntityClass;
-import org.scada_lts.user_management.model.acl.EntityIdentity;
-import org.scada_lts.user_management.model.acl.Entry;
+import org.scada_lts.user_management.dao.acl.SidDao;
 import org.scada_lts.user_management.model.acl.Sid;
-import org.scada_lts.user_management.model.security.Permission;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author Grzegorz Bylica grzegorz.bylica@gmail.com
- **/
-public interface PermissionEvaluatorService {
+ * @Author Arkadiusz Parafiniuk arkadiusz.parafiniuk@gmail.com
+ *
+ * Business logic for Sid
+ * @see Sid
+ */
+@Service
+public class SidServiceImpl implements SidService {
 
-    List<Entry> filterDataBaseOnACL(Sid sid, EntityClass entityClass, Permission permision);
+    @Resource
+    SidDao sidDao;
 
-    boolean hasPermission(Sid sid, EntityIdentity entityIdentity, Permission permision);
+    @Override
+    public List<Sid> getAll() {
+        return sidDao.getAll();
+    }
 
+    @Override
+    public Sid add(Sid sid) {
+        return sidDao.create(sid);
+    }
+
+    @Override
+    public void delete(Sid sid) {
+        sidDao.delete(sid);
+    }
+
+    @Override
+    public Sid getSid(Long id) {
+        return sidDao.get(id);
+    }
+
+    @Override
+    public void update(Sid sid) {
+        sidDao.update(sid);
+    }
 }

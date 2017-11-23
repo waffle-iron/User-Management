@@ -17,21 +17,47 @@
  */
 package org.scada_lts.user_management.service.acl;
 
-import org.scada_lts.user_management.model.acl.EntityClass;
-import org.scada_lts.user_management.model.acl.EntityIdentity;
+import org.scada_lts.user_management.dao.acl.EntryDao;
 import org.scada_lts.user_management.model.acl.Entry;
-import org.scada_lts.user_management.model.acl.Sid;
-import org.scada_lts.user_management.model.security.Permission;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author Grzegorz Bylica grzegorz.bylica@gmail.com
- **/
-public interface PermissionEvaluatorService {
+ * @Author Arkadiusz Parafiniuk arkadiusz.parafiniuk@gmail.com
+ *
+ * Business logic for Entry
+ * @see Entry
+ */
+@Service
+public class EntryServiceImpl implements EntryService {
 
-    List<Entry> filterDataBaseOnACL(Sid sid, EntityClass entityClass, Permission permision);
+    @Resource
+    EntryDao entryDao;
 
-    boolean hasPermission(Sid sid, EntityIdentity entityIdentity, Permission permision);
+    @Override
+    public List<Entry> getAll() {
+        return entryDao.getAll();
+    }
 
+    @Override
+    public Entry add(Entry entry) {
+        return entryDao.create(entry);
+    }
+
+    @Override
+    public void delete(Entry entry) {
+        entryDao.delete(entry);
+    }
+
+    @Override
+    public Entry getEntry(Long id) {
+        return entryDao.get(id);
+    }
+
+    @Override
+    public void update(Entry entry) {
+        entryDao.update(entry);
+    }
 }
