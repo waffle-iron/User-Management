@@ -4,11 +4,28 @@ body{
 
 .cont{
     background-color:#ffff66;
+    border-radius: 0px 0px 20px 20px;
+    -moz-border-radius: 0px 0px 20px 20px;
+    -webkit-border-radius: 0px 0px 20px 20px;
+    border: 2px solid #000000;
     width:1000px;
     margin:auto;
+    padding-bottom:30px;
+    padding-top:30px;
+
 }
 
 .big-link{
-    color:blue;
-    font-weight: bold;
+     color:blue;
+     font-weight: bold;
+ }
+
+ .big-link:hover{
+     color:green;
+     text-decoration:none;
+ }
+
+.logo{
+    width:30%;
+    height:30%;
 }
