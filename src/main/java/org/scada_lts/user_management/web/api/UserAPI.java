@@ -95,7 +95,7 @@ public class UserAPI {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
-        usersService.del(user);
+        usersService.delete(user);
         return new ResponseEntity(HttpStatus.OK);
     }
 

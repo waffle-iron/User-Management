@@ -9,7 +9,7 @@ public interface UsersService {
 
     UserDto add(String username, String password);
 
-    void del(UserDto userDto);
+    void delete(UserDto userDto);
 
     UserDto getUser(Long id);
 

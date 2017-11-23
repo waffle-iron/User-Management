@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsersServiceImp implements UsersService {
+public class UsersServiceImpl implements UsersService {
 
     @Resource
     private UserDao userDao;
@@ -29,7 +29,7 @@ public class UsersServiceImp implements UsersService {
     }
 
     @Override
-    public void del(UserDto userDto) {
+    public void delete(UserDto userDto) {
         userDao.delete(convertToEntity(userDto));
     }
 
