@@ -50,7 +50,7 @@ public class EntityIdentity implements Serializable {
     public EntityIdentity(String identityId, EntityClass entityClass, EntityIdentity parent, Sid owner) {
         this.identityId = identityId;
         this.entityClass = entityClass;
-        this.entityIdentity = this;
+        this.entityIdentity = null;
         this.parent = parent;
         this.owner = owner;
     }

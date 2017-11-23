@@ -20,6 +20,7 @@ package org.scada_lts.user_management.web.api;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scada_lts.user_management.model.acl.Entry;
+import org.scada_lts.user_management.model.dto.EntryDto;
 import org.scada_lts.user_management.model.dto.InputFilterAcl;
 import org.scada_lts.user_management.model.dto.InputHasPermission;
 import org.scada_lts.user_management.service.acl.PermissionEvaluatorService;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,12 +48,19 @@ public class PermissionEvaluatorAPI {
     private PermissionEvaluatorService permissionEvaluatorService;
 
     @RequestMapping(value = "/permission/filter", method = RequestMethod.POST)
-    public ResponseEntity<List<Entry>> filter(@RequestBody InputFilterAcl inputFilterAcl) {
+    public ResponseEntity<List<EntryDto>> filter(@RequestBody InputFilterAcl inputFilterAcl) {
 
         LOG.info("POST /api/permission/filter inputFilterAcl:"+inputFilterAcl.toString());
         try {
+            //TODO rewrite
             List<Entry> entries = permissionEvaluatorService.filterDataBaseOnACL(inputFilterAcl.getSid(), inputFilterAcl.getEntityClass(), inputFilterAcl.getPermision());
-            return new ResponseEntity<List<Entry>>(entries, HttpStatus.OK);
+            List<EntryDto> results = new ArrayList<>();
+            LOG.info("size:"+entries.size());
+            for (Entry entry : entries) {
+                    results.add(new EntryDto(entry.getId(),entry.getMask()));
+            }
+            return new ResponseEntity<List<EntryDto>>(results, HttpStatus.OK);
+            //return new ResponseEntity<List<Entry>>(HttpStatus.OK);
         } catch (Exception e) {
             LOG.error(e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
